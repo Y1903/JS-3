@@ -13,10 +13,14 @@ let user = {
 };
 
 // task 2
-function sayHello(name, lastName) {
-  console.log("Hallo", name, lastName);
+function greetUser(user1) {
+  return `Hello, ${user1.firstName} ${user1.lastName}`;
 }
-sayHello("Yuliia", "Nazarin");
+const user1 = {
+  firstName: "Yuliia",
+  lastName: "Nazarin",
+};
+console.log(greetUser(user1));
 
 // task 3
 function printUserInfo(user) {
@@ -36,33 +40,31 @@ const car = {
   capacity: "2",
   speed: "0",
   maxSpeed: "325",
-};
 
-function Car(name, maxSpeed) {
-  this.name = name;
-  this.maxSpeed = maxSpeed;
-  this.speed = 0;
-
-  this.accelerate = function (value) {
-    this.speed += value;
-    if (this.speed > maxSpeed) {
-      this.speed = maxSpeed;
+  accelerate(kmh) {
+    this.speed += kmh;
+    if (this.speed > this.maxSpeed) {
+      this.speed = this.maxSpeed;
     }
-    return this.speed;
-  };
+    console.log(`Speed: ${this.speed} km/h`);
+  },
 
-  this.decelerate = function (value) {
-    this.speed -= value;
+  decelerate(kmh) {
+    this.speed -= kmh;
     if (this.speed < 0) {
       this.speed = 0;
     }
-    return this.speed;
-  };
+    console.log(`Speed: ${this.speed} km/h`);
+  },
 
-  this.stop = function () {
-    return (this.speed = 0);
-  };
-}
+  stop() {
+    this.speed = 0;
+    console.log(`Stop. Speed: ${this.speed} km/h`);
+  },
+};
+car.accelerate(100);
+car.decelerate(50);
+car.stop();
 
 // task 5
 
